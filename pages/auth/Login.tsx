@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Button } from '../../components/ui/Button';
-import { Briefcase, GraduationCap } from 'lucide-react';
+import { 
+  TechOrbitDisplay, 
+  AnimatedForm, 
+  Ripple,
+  Field
+} from '../../components/ui/AnimatedLoginComponents';
+import { Briefcase, GraduationCap, Code2, Cpu, Globe, Database, Award, Home } from 'lucide-react';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -10,107 +15,176 @@ export const Login: React.FC = () => {
   const [isInstructor, setIsInstructor] = useState(false);
   const { login, isLoading } = useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const role = isInstructor ? 'instructor' : 'student';
-    await login(email, role);
-    
-    if (role === 'instructor') {
-      navigate('/instructor');
-    } else {
-      navigate('/dashboard');
+    setError('');
+    try {
+        const role = isInstructor ? 'instructor' : 'student';
+        await login(email, role);
+        
+        if (role === 'instructor') {
+            navigate('/instructor');
+        } else {
+            navigate('/dashboard');
+        }
+    } catch (err) {
+        setError('Falha ao realizar login. Tente novamente.');
     }
   };
 
+  // Configuração de Cores Baseada no Papel
+  const themeColor = isInstructor ? "#8b5cf6" : "#10b981"; // Violet vs Emerald
+  const buttonClass = isInstructor 
+    ? "bg-violet-600 hover:bg-violet-500 shadow-violet-500/20" 
+    : "bg-emerald-500 hover:bg-emerald-400 shadow-emerald-500/20";
+
+  // Ícones para a animação orbital
+  const icons = [
+    {
+        component: () => <Code2 size={30} className="text-white" />,
+        className: "size-[50px] border-none bg-transparent",
+        duration: 20,
+        delay: 20,
+        radius: 80,
+    },
+    {
+        component: () => <Cpu size={30} className="text-white" />,
+        className: "size-[50px] border-none bg-transparent",
+        duration: 20,
+        delay: 10,
+        radius: 80,
+    },
+    {
+        component: () => <Globe size={40} className="text-white" />,
+        className: "size-[70px] border-none bg-transparent",
+        duration: 20,
+        delay: 10,
+        radius: 140,
+        reverse: true,
+    },
+    {
+        component: () => <Database size={40} className="text-white" />,
+        className: "size-[70px] border-none bg-transparent",
+        duration: 20,
+        delay: 20,
+        radius: 140,
+        reverse: true,
+    },
+    {
+        component: () => <Award size={50} className="text-white" />,
+        className: "size-[90px] border-none bg-transparent",
+        duration: 20,
+        delay: 5,
+        radius: 210,
+    }
+  ];
+
+  const fields: Field[] = [
+    {
+      label: "Email",
+      type: "email",
+      placeholder: isInstructor ? "professor@forgether.com" : "aluno@email.com",
+      required: true,
+      value: email,
+      onChange: (e) => setEmail(e.target.value)
+    },
+    {
+      label: "Senha",
+      type: "password",
+      placeholder: "••••••••",
+      required: true,
+      value: password,
+      onChange: (e) => setPassword(e.target.value)
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark-900 relative overflow-hidden px-4">
-       {/* Ambient Glows - Change color based on role */}
-       <div className={`absolute top-1/4 -left-24 w-96 h-96 rounded-full blur-[128px] transition-colors duration-1000 ${isInstructor ? 'bg-violet-500/20' : 'bg-emerald-500/20'}`}></div>
-       <div className={`absolute bottom-1/4 -right-24 w-96 h-96 rounded-full blur-[128px] transition-colors duration-1000 ${isInstructor ? 'bg-fuchsia-500/10' : 'bg-teal-500/10'}`}></div>
+    <div className="min-h-screen flex flex-col lg:flex-row bg-dark-900 overflow-hidden">
+      
+      {/* Lado Esquerdo: Visual Orbitante */}
+      <div className="hidden lg:flex w-1/2 relative items-center justify-center bg-dark-950/50 border-r border-white/5">
+         <Ripple mainCircleSize={300} mainCircleOpacity={0.15} numCircles={6} />
+         <div className="absolute inset-0 z-10">
+            <TechOrbitDisplay 
+                iconsArray={icons}
+                text={
+                    <div className="text-center z-20 relative">
+                         <span className="text-5xl font-bold font-display tracking-tight text-white block mb-2">
+                            For<span style={{ color: themeColor }}>gether</span>
+                        </span>
+                        <span className="text-lg text-gray-400 font-light">
+                            {isInstructor ? "Painel Pedagógico" : "Aprenda com inovação"}
+                        </span>
+                    </div>
+                }
+            />
+         </div>
+         {/* Overlay Gradient */}
+         <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-dark-900 pointer-events-none z-20" />
+      </div>
 
-       <div className="w-full max-w-md relative z-10">
-          <div className="text-center mb-8">
-            <Link to="/" className="inline-block mb-4">
-                <span className="text-3xl font-bold font-display tracking-tight text-white">
-                    For<span className={isInstructor ? "text-violet-500" : "text-emerald-500"}>gether</span>
-                </span>
+      {/* Lado Direito: Formulário */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center relative p-6">
+          
+          {/* Home Button (Absolute Top Right) */}
+          <div className="absolute top-6 right-6 z-30">
+            <Link 
+                to="/" 
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all shadow-lg backdrop-blur-sm"
+                title="Voltar para Home"
+            >
+                <Home size={20} />
             </Link>
-            <h1 className="text-xl font-medium text-gray-200 font-display mt-2">
-              {isInstructor ? 'Portal Pedagógico' : 'Área do Aluno'}
-            </h1>
-            <p className="text-gray-400 mt-1 text-sm">
-              {isInstructor ? 'Gerencie cursos e acompanhe alunos.' : 'Entre para continuar sua jornada.'}
-            </p>
           </div>
 
-          {/* Role Toggle */}
-          <div className="flex p-1 bg-white/5 border border-white/10 rounded-xl mb-6 backdrop-blur-md">
-            <button 
-              type="button"
-              onClick={() => setIsInstructor(false)}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg text-sm font-medium transition-all ${!isInstructor ? 'bg-emerald-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
-            >
-              <GraduationCap size={16} className="mr-2" />
-              Aluno
-            </button>
-            <button 
-              type="button"
-              onClick={() => setIsInstructor(true)}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg text-sm font-medium transition-all ${isInstructor ? 'bg-violet-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
-            >
-              <Briefcase size={16} className="mr-2" />
-              Instrutor
-            </button>
-          </div>
-
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl shadow-2xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Email Corporativo ou Pessoal</label>
-                      <input 
-                        type="email" 
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className={`w-full bg-dark-950/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-1 transition-all ${isInstructor ? 'focus:border-violet-500 focus:ring-violet-500' : 'focus:border-emerald-500 focus:ring-emerald-500'}`}
-                        placeholder={isInstructor ? "professor@learnhub.com" : "aluno@email.com"}
-                      />
-                  </div>
-                  <div>
-                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Senha</label>
-                      <input 
-                        type="password" 
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className={`w-full bg-dark-950/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-1 transition-all ${isInstructor ? 'focus:border-violet-500 focus:ring-violet-500' : 'focus:border-emerald-500 focus:ring-emerald-500'}`}
-                        placeholder="••••••••"
-                      />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    fullWidth 
-                    className={`text-white shadow-lg border-none transition-colors ${isInstructor ? 'bg-violet-600 hover:bg-violet-500 shadow-violet-500/25' : 'bg-emerald-500 hover:bg-emerald-400 shadow-emerald-500/25'}`}
-                    disabled={isLoading}
-                  >
-                    {isLoading ? 'Acessando...' : (isInstructor ? 'Acessar Painel' : 'Entrar na Plataforma')}
-                  </Button>
-              </form>
-
-              {!isInstructor && (
-                <div className="mt-8 pt-6 border-t border-white/5 text-center">
+          <AnimatedForm 
+            header={
+                <div className="mb-1">
+                    <h2 className="text-3xl font-bold text-white font-display">Bem-vindo de volta</h2>
+                </div>
+            }
+            subHeader={isInstructor ? "Gerencie suas turmas e conteúdos." : "Continue sua jornada de evolução."}
+            fields={fields}
+            submitButton={isInstructor ? "Acessar Painel" : "Entrar na Plataforma"}
+            onSubmit={handleSubmit}
+            errorField={error}
+            highlightColor={themeColor}
+            buttonColorClass={buttonClass}
+            isLoading={isLoading}
+            topContent={
+                <div className="flex p-1 bg-white/5 border border-white/10 rounded-xl mb-2 backdrop-blur-md">
+                    <button 
+                        type="button"
+                        onClick={() => setIsInstructor(false)}
+                        className={`flex-1 flex items-center justify-center py-2 rounded-lg text-sm font-medium transition-all ${!isInstructor ? 'bg-emerald-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+                    >
+                        <GraduationCap size={16} className="mr-2" />
+                        Aluno
+                    </button>
+                    <button 
+                        type="button"
+                        onClick={() => setIsInstructor(true)}
+                        className={`flex-1 flex items-center justify-center py-2 rounded-lg text-sm font-medium transition-all ${isInstructor ? 'bg-violet-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+                    >
+                        <Briefcase size={16} className="mr-2" />
+                        Instrutor
+                    </button>
+                </div>
+            }
+            textVariantButton={
+                !isInstructor && (
                     <p className="text-gray-400 text-sm">
                         Ainda não tem conta?{' '}
-                        <Link to="/register" className="text-emerald-400 font-bold hover:text-emerald-300 hover:underline">
+                        <Link to="/register" className="text-emerald-400 font-bold hover:text-emerald-300 hover:underline transition-colors">
                             Criar conta grátis
                         </Link>
                     </p>
-                </div>
-              )}
-          </div>
-       </div>
+                )
+            }
+          />
+      </div>
     </div>
   );
 };
