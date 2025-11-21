@@ -142,7 +142,7 @@ interface HeroProps {
 
 export const Hero = ({
 	title = "Aprenda com inovação, ritmo e diversão",
-	description = "LearnHub Pro é a plataforma gamificada que transforma estudo em experiência. Ganhe XP, conquiste badges e domine o mercado tech.",
+	description = "Forgether é a plataforma gamificada que transforma estudo em experiência. Ganhe XP, conquiste badges e domine o mercado tech.",
 	badgeText = "Inscrições Abertas",
 	badgeLabel = "Nova Turma",
 	ctaButtons = [

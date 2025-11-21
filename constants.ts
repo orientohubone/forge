@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Feature, PricingPlan, Testimonial, Step, Stat, NavItem, Course, Mentor, BlogPost } from "./types";
 
-export const APP_NAME = "LearnHub Pro";
+export const APP_NAME = "Forgether";
 
 // Navbar: Mix de âncoras (Home) e rotas
 export const NAV_ITEMS: NavItem[] = [
@@ -136,7 +136,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Mariana Costa",
     role: "UX Designer",
     company: "TechFlow",
-    content: "A LearnHub Pro transformou a maneira como estudo. A gamificação me manteve motivada quando eu normalmente teria desistido.",
+    content: "A Forgether transformou a maneira como estudo. A gamificação me manteve motivada quando eu normalmente teria desistido.",
     avatar: "https://picsum.photos/100/100?random=1",
   },
   {

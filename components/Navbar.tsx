@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, LayoutDashboard } from 'lucide-react';
+import { Menu, X, LayoutDashboard } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from './ui/Button';
-import { NAV_ITEMS, APP_NAME } from '../constants';
+import { NAV_ITEMS } from '../constants';
 import { useAuth } from '../context/AuthContext';
 
 export const Navbar: React.FC = () => {
@@ -48,11 +48,8 @@ export const Navbar: React.FC = () => {
           
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer select-none" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center mr-2 text-white shadow-[0_0_15px_rgba(52,211,153,0.5)]">
-              <Sparkles size={18} />
-            </div>
             <span className="text-xl font-bold font-display tracking-tight text-white">
-              {APP_NAME}
+              For<span className="text-emerald-500">gether</span>
             </span>
           </Link>
 

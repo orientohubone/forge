@@ -9,9 +9,7 @@ import {
   LogOut, 
   Menu, 
   Bell, 
-  Sparkles,
   Search,
-  Briefcase
 } from 'lucide-react';
 import { APP_NAME } from '../constants';
 
@@ -51,10 +49,9 @@ export const InstructorLayout: React.FC = () => {
         <div className="h-full flex flex-col">
           {/* Logo */}
           <div className="h-16 flex items-center px-6 border-b border-white/5">
-            <div className="w-6 h-6 bg-violet-600 rounded-md flex items-center justify-center mr-2 text-white shadow-[0_0_10px_rgba(139,92,246,0.4)]">
-              <Briefcase size={14} />
-            </div>
-            <span className="text-lg font-bold font-display text-white tracking-tight">{APP_NAME} <span className="text-violet-400 text-xs align-top">Pro</span></span>
+            <span className="text-lg font-bold font-display text-white tracking-tight">
+                For<span className="text-emerald-500">gether</span> <span className="text-violet-400 text-xs align-top">Pro</span>
+            </span>
           </div>
 
           {/* Instructor Info */}

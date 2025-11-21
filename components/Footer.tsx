@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Twitter, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { APP_NAME } from '../constants';
 
@@ -11,10 +11,9 @@ export const Footer: React.FC = () => {
           
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center mb-6">
-               <div className="w-6 h-6 bg-emerald-500 rounded-md flex items-center justify-center mr-2 text-white shadow-[0_0_10px_rgba(16,185,129,0.4)]">
-                <Sparkles size={14} />
-              </div>
-              <span className="text-lg font-bold font-display text-white">{APP_NAME}</span>
+              <span className="text-lg font-bold font-display text-white">
+                For<span className="text-emerald-500">gether</span>
+              </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 font-light">
               Transformando a educação através da tecnologia e gamificação. Sua carreira, no próximo nível.

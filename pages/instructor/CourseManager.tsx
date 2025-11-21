@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useCourses } from '../../context/CourseContext';
 import { Button } from '../../components/ui/Button';
-import { Input } from 'lucide-react'; // Placeholder import if needed
 
 export const CourseManager: React.FC = () => {
   const { courses, addCourse, deleteCourse } = useCourses();
