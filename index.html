@@ -35,7 +35,6 @@
                 900: '#0f172a',
                 950: '#020617',
               },
-              // Garantindo que emerald esteja disponível e estendido se necessario
               emerald: {
                 50: '#ecfdf5',
                 100: '#d1fae5',
@@ -73,7 +72,7 @@
         font-family: 'Plus Jakarta Sans', sans-serif;
       }
       .glass-panel {
-        background: rgba(15, 23, 42, 0.8); /* Darker glass */
+        background: rgba(15, 23, 42, 0.8);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -82,26 +81,23 @@
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react/jsx-runtime": "https://esm.sh/react@18.2.0/jsx-runtime",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?deps=react@18.2.0",
-    "react-dom": "https://esm.sh/react-dom@18.2.0?deps=react@18.2.0",
-    "react-router": "https://esm.sh/react-router@6.22.3?deps=react@18.2.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.2.0,react-dom@18.2.0",
-    "@remix-run/router": "https://esm.sh/@remix-run/router@1.15.3?deps=react@18.2.0",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
-    "three": "https://esm.sh/three@0.160.0",
-    "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.15.16?deps=three@0.160.0,react@18.2.0,react-dom@18.2.0",
-    "scheduler": "https://esm.sh/scheduler@0.23.0",
-    "gsap": "https://esm.sh/gsap@3.12.5",
-    "@gsap/react": "https://esm.sh/@gsap/react@2.1.0?deps=gsap@3.12.5,react@18.2.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "@react-three/fiber": "https://aistudiocdn.com/@react-three/fiber@^9.4.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "three": "https://aistudiocdn.com/three@^0.181.2",
+    "@gsap/react": "https://aistudiocdn.com/@gsap/react@^2.1.2",
+    "gsap": "https://aistudiocdn.com/gsap@^3.13.0"
   }
 }
 </script>
 </head>
   <body class="bg-dark-900 text-slate-50 selection:bg-emerald-500 selection:text-white">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
