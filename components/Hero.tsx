@@ -132,7 +132,7 @@ const fragmentShader = `
 // --- Main Component ---
 
 interface HeroProps {
-	title?: string;
+	title?: string; // Deprecated/Unused in favor of hardcoded branding, kept for compatibility
 	description?: string;
 	badgeText?: string;
 	badgeLabel?: string;
@@ -141,7 +141,6 @@ interface HeroProps {
 }
 
 export const Hero = ({
-	title = "Aprenda com inovação, ritmo e diversão",
 	description = "Forgether é a plataforma gamificada que transforma estudo em experiência. Ganhe XP, conquiste badges e domine o mercado tech.",
 	badgeText = "Inscrições Abertas",
 	badgeLabel = "Nova Turma",
@@ -249,7 +248,7 @@ export const Hero = ({
 					ref={headingRef}
 					className="text-5xl md:text-7xl lg:text-8xl max-w-5xl font-bold tracking-tighter text-white mb-8 leading-[1.1]"
 				>
-					{title}
+					<span className="text-emerald-500">Lets,</span> Forgether!
 				</h1>
 
 				<p
