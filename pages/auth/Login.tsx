@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Button } from '../../components/ui/Button';
-import { Sparkles, Briefcase, GraduationCap } from 'lucide-react';
+import { Briefcase, GraduationCap } from 'lucide-react';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -31,15 +31,15 @@ export const Login: React.FC = () => {
 
        <div className="w-full max-w-md relative z-10">
           <div className="text-center mb-8">
-            <Link to="/" className="inline-flex items-center justify-center mb-4">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mr-2 text-white shadow-lg transition-colors duration-500 ${isInstructor ? 'bg-violet-600 shadow-violet-500/30' : 'bg-emerald-500 shadow-emerald-500/30'}`}>
-                    <Sparkles size={20} />
-                </div>
+            <Link to="/" className="inline-block mb-4">
+                <span className="text-3xl font-bold font-display tracking-tight text-white">
+                    For<span className={isInstructor ? "text-violet-500" : "text-emerald-500"}>gether</span>
+                </span>
             </Link>
-            <h1 className="text-3xl font-bold text-white font-display">
+            <h1 className="text-xl font-medium text-gray-200 font-display mt-2">
               {isInstructor ? 'Portal Pedagógico' : 'Área do Aluno'}
             </h1>
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-400 mt-1 text-sm">
               {isInstructor ? 'Gerencie cursos e acompanhe alunos.' : 'Entre para continuar sua jornada.'}
             </p>
           </div>

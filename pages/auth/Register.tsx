@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Button } from '../../components/ui/Button';
-import { Sparkles } from 'lucide-react';
 
 export const Register: React.FC = () => {
   const [name, setName] = useState('');
@@ -25,13 +24,13 @@ export const Register: React.FC = () => {
 
        <div className="w-full max-w-md relative z-10">
           <div className="text-center mb-8">
-            <Link to="/" className="inline-flex items-center justify-center mb-4">
-                <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center mr-2 text-white shadow-lg shadow-emerald-500/30">
-                    <Sparkles size={20} />
-                </div>
+            <Link to="/" className="inline-block mb-4">
+                <span className="text-3xl font-bold font-display tracking-tight text-white">
+                    For<span className="text-emerald-500">gether</span>
+                </span>
             </Link>
-            <h1 className="text-3xl font-bold text-white font-display">Comece sua Jornada</h1>
-            <p className="text-gray-400 mt-2">Crie sua conta e ganhe acesso instantâneo.</p>
+            <h1 className="text-xl font-medium text-white font-display mt-2">Comece sua Jornada</h1>
+            <p className="text-gray-400 mt-1 text-sm">Crie sua conta e ganhe acesso instantâneo.</p>
           </div>
 
           <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl shadow-2xl">
