@@ -136,11 +136,12 @@ export const Register: React.FC = () => {
       </div>
 
       {/* Lado Direito: Formulário */}
-      {/* FIX MOBILE: pt-32 adiciona espaço para a Navbar, items-start em vez de center no mobile para evitar corte superior */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center justify-start pt-32 pb-10 lg:justify-center lg:pt-0 relative p-6 min-h-screen">
+      {/* FIX: Added lg:pt-24 to push content down below Navbar on Desktop/Laptop */}
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-start pt-32 pb-10 lg:justify-center lg:pt-24 relative p-6 min-h-screen">
           
           {/* Home Button (Absolute Top Right) */}
-          <div className="absolute top-24 right-6 lg:top-6 z-30">
+          {/* FIX: Changed lg:top-6 to lg:top-28 to sit below the Navbar */}
+          <div className="absolute top-24 right-6 lg:top-28 z-30">
             <Link 
                 to="/" 
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all shadow-lg backdrop-blur-sm"
