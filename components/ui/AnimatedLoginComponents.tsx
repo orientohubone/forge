@@ -59,11 +59,11 @@ export const Input = memo(
         <input
           type={type}
           className={cn(
-            `flex h-10 w-full rounded-md border-none bg-dark-950 px-3 py-2 text-sm text-white shadow-input transition duration-400 
+            `flex h-10 w-full rounded-md border border-white/10 bg-dark-950 px-3 py-2 text-sm text-white shadow-sm transition duration-400 
              file:border-0 file:bg-transparent file:text-sm file:font-medium 
-             placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-[2px] 
+             placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-[2px] 
              disabled:cursor-not-allowed disabled:opacity-50
-             group-hover/input:shadow-none dark:shadow-[0px_0px_1px_1px_#404040]`,
+             group-hover/input:shadow-none`,
             className
           )}
           ref={ref}
