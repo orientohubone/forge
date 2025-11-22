@@ -2,9 +2,12 @@ import React from 'react';
 import { Clock, Award, BarChart } from 'lucide-react';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { Button } from '../components/ui/Button';
-import { COURSES } from '../constants';
+import { useCourses } from '../context/CourseContext';
+import { Link } from 'react-router-dom';
 
 export const Courses: React.FC = () => {
+  const { courses } = useCourses();
+
   return (
     <div className="pt-32 pb-20 bg-dark-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,7 +18,7 @@ export const Courses: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {COURSES.map((course) => (
+            {courses.map((course) => (
                 <div key={course.id} className="group bg-white/5 rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/30 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 flex flex-col">
                     <div className="relative h-48 overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent z-10"></div>
@@ -40,7 +43,7 @@ export const Courses: React.FC = () => {
                             </div>
                         </div>
 
-                        <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-emerald-400 transition-colors">
+                        <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-emerald-400 transition-colors leading-tight">
                             {course.title}
                         </h3>
 
@@ -57,9 +60,11 @@ export const Courses: React.FC = () => {
                                 <BarChart size={16} className="mr-2" />
                                 {course.modules} Módulos
                              </div>
-                             <Button variant="outline" size="sm" className="border-white/20 text-white hover:border-emerald-500 hover:text-emerald-400">
-                                Detalhes
-                             </Button>
+                             <Link to="/register">
+                                 <Button variant="outline" size="sm" className="border-white/20 text-white hover:border-emerald-500 hover:text-emerald-400">
+                                    Detalhes
+                                 </Button>
+                             </Link>
                         </div>
                     </div>
                 </div>

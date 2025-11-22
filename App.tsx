@@ -16,10 +16,12 @@ import { Blog } from './pages/Blog';
 import { Legal } from './pages/Legal';
 import { Login } from './pages/auth/Login';
 import { Register } from './pages/auth/Register';
+import { Checkout } from './pages/Checkout';
 
 // Student Pages
 import { Overview } from './pages/dashboard/Overview';
 import { MyCourses } from './pages/dashboard/MyCourses';
+import { Tracks } from './pages/dashboard/Tracks';
 
 // Instructor Pages
 import { InstructorDashboard } from './pages/instructor/InstructorDashboard';
@@ -49,6 +51,7 @@ function App() {
             <Route path="/legal" element={<Legal />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/checkout" element={<Checkout />} />
             
             {/* Fallbacks */}
             <Route path="/careers" element={<div className="pt-40 text-center bg-dark-900 h-screen"><h1 className="text-2xl text-white">Em breve...</h1></div>} />
@@ -60,6 +63,7 @@ function App() {
           {/* Student Private Routes */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Overview />} />
+            <Route path="tracks" element={<Tracks />} />
             <Route path="courses" element={<MyCourses />} />
             <Route path="achievements" element={<div className="text-white p-8">Minhas Conquistas (Em breve)</div>} />
             <Route path="settings" element={<div className="text-white p-8">Configurações (Em breve)</div>} />

@@ -111,10 +111,10 @@ export const Register: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-dark-900 overflow-hidden">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-dark-900">
       
-      {/* Lado Esquerdo: Visual Orbitante */}
-      <div className="hidden lg:flex w-1/2 relative items-center justify-center bg-dark-950/50 border-r border-white/5">
+      {/* Lado Esquerdo: Visual Orbitante (Desktop Only) */}
+      <div className="hidden lg:flex w-1/2 relative items-center justify-center bg-dark-950/50 border-r border-white/5 h-screen sticky top-0 overflow-hidden">
          <Ripple mainCircleSize={300} mainCircleOpacity={0.15} numCircles={6} />
          <div className="absolute inset-0 z-10">
             <TechOrbitDisplay 
@@ -136,10 +136,11 @@ export const Register: React.FC = () => {
       </div>
 
       {/* Lado Direito: Formulário */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center relative p-6">
+      {/* FIX MOBILE: pt-32 adiciona espaço para a Navbar, items-start em vez de center no mobile para evitar corte superior */}
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-start pt-32 pb-10 lg:justify-center lg:pt-0 relative p-6 min-h-screen">
           
           {/* Home Button (Absolute Top Right) */}
-          <div className="absolute top-6 right-6 z-30">
+          <div className="absolute top-24 right-6 lg:top-6 z-30">
             <Link 
                 to="/" 
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all shadow-lg backdrop-blur-sm"

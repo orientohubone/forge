@@ -347,7 +347,8 @@ export const AnimatedForm = memo(function AnimatedForm({
   const toggleVisibility = () => setVisible(!visible);
 
   return (
-    <div className='max-md:w-full flex flex-col gap-4 w-96 mx-auto z-20 relative'>
+    // FIX: Removed w-96 fixed width, added w-full max-w-md for responsive behavior
+    <div className='w-full max-w-md mx-auto flex flex-col gap-4 z-20 relative'>
       <BoxReveal boxColor={highlightColor} duration={0.3}>
         {header}
       </BoxReveal>

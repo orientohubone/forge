@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check, X as XIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { SectionHeading } from './ui/SectionHeading';
 import { Button } from './ui/Button';
 import { PLANS } from '../constants';
@@ -62,13 +63,15 @@ export const Pricing: React.FC = () => {
                 ))}
               </ul>
 
-              <Button 
-                variant={plan.popular ? 'primary' : 'outline'} 
-                fullWidth
-                className={!plan.popular ? 'text-white border-white/10 hover:bg-white/5 hover:border-emerald-500/50 hover:text-emerald-400' : 'shadow-lg shadow-emerald-500/20'}
-              >
-                {plan.cta}
-              </Button>
+              <Link to={plan.href} className="w-full">
+                <Button 
+                  variant={plan.popular ? 'primary' : 'outline'} 
+                  fullWidth
+                  className={!plan.popular ? 'text-white border-white/10 hover:bg-white/5 hover:border-emerald-500/50 hover:text-emerald-400' : 'shadow-lg shadow-emerald-500/20'}
+                >
+                  {plan.cta}
+                </Button>
+              </Link>
             </div>
           ))}
         </div>

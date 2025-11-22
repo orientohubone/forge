@@ -9,9 +9,9 @@ import {
   LogOut, 
   Menu, 
   Bell, 
-  Search
+  Search,
+  Compass
 } from 'lucide-react';
-import { APP_NAME } from '../constants';
 
 export const DashboardLayout: React.FC = () => {
   const { user, isAuthenticated, isLoading, logout } = useAuth();
@@ -23,12 +23,12 @@ export const DashboardLayout: React.FC = () => {
 
   const navItems = [
     { icon: LayoutDashboard, label: 'Visão Geral', path: '/dashboard' },
+    { icon: Compass, label: 'Explorar Trilhas', path: '/dashboard/tracks' },
     { icon: BookOpen, label: 'Meus Cursos', path: '/dashboard/courses' },
     { icon: Trophy, label: 'Conquistas', path: '/dashboard/achievements' },
     { icon: Settings, label: 'Configurações', path: '/dashboard/settings' },
   ];
 
-  // Calcula porcentagem de XP para o próximo nível
   const xpPercentage = user ? (user.currentXP / user.nextLevelXP) * 100 : 0;
 
   return (

@@ -24,12 +24,14 @@ export interface PlanFeature {
 }
 
 export interface PricingPlan {
+  id: string;
   name: string;
   price: string;
   period: string;
   description: string;
   features: PlanFeature[];
   cta: string;
+  href: string;
   popular?: boolean;
 }
 
@@ -52,6 +54,10 @@ export interface Course {
   id: string;
   title: string;
   level: 'Iniciante' | 'Intermediário' | 'Avançado';
+  category: string; // New
+  description: string; // New
+  requirements: string[]; // New
+  videoPreview?: string; // New (Youtube Embed URL)
   xp: number;
   duration: string;
   image: string;
