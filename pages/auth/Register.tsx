@@ -136,12 +136,11 @@ export const Register: React.FC = () => {
       </div>
 
       {/* Lado Direito: Formulário */}
-      {/* FIX: Added lg:pt-24 to push content down below Navbar on Desktop/Laptop */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center justify-start pt-32 pb-10 lg:justify-center lg:pt-24 relative p-6 min-h-screen">
+      {/* Adjusted lg:pt-32 for better Laptop clearance */}
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-start pt-32 pb-10 lg:justify-center lg:pt-32 relative p-6 min-h-screen">
           
           {/* Home Button (Absolute Top Right) */}
-          {/* FIX: Changed lg:top-6 to lg:top-28 to sit below the Navbar */}
-          <div className="absolute top-24 right-6 lg:top-28 z-30">
+          <div className="absolute top-24 right-6 lg:top-32 z-30">
             <Link 
                 to="/" 
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all shadow-lg backdrop-blur-sm"

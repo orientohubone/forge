@@ -19,17 +19,26 @@ export const Features: React.FC = () => {
           {FEATURES.map((feature, index) => (
             <div 
               key={index} 
-              className="group p-8 rounded-3xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-emerald-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1"
+              className="group relative h-full rounded-3xl overflow-hidden p-[1px] transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]">
-                <feature.icon size={28} />
+              {/* Animated Rotating Border Gradient - Visible on Hover */}
+              <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0f172a_0%,#0f172a_50%,#10b981_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Inner Card Content */}
+              <div className="relative h-full bg-dark-900 rounded-[calc(1.5rem-1px)] p-8 border border-white/5 group-hover:border-transparent transition-colors backdrop-blur-xl">
+                
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]">
+                  <feature.icon size={28} />
+                </div>
+                
+                <h3 className="text-xl font-bold text-white mb-3 font-display">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-emerald-100/60 leading-relaxed text-sm">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 font-display">
-                {feature.title}
-              </h3>
-              <p className="text-emerald-100/60 leading-relaxed text-sm">
-                {feature.description}
-              </p>
             </div>
           ))}
         </div>
